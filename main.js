@@ -12,18 +12,35 @@ function init() {
     document.querySelector('#user-input2')
             .addEventListener('keyup', handleUserInput2);
     document.querySelector('#reset')
+    document.querySelector('#user-input1')
+        .addEventListener('keyup', handleUserInput3);
+    document.querySelector('#user-input2')
+            .addEventListener('keyup', handleUserInput4);
+    document.querySelector('#reset')
+    document.querySelector('#user-input1')
+        .addEventListener('keyup', handleUserInput5);
+    document.querySelector('#user-input2')
         .addEventListener('click', reset)
 }
 
 function reset() {
     input1 = '';
     input2 = '';
+    input3 = '';
+    input4 = '';
+    input5 = '';
     result = '';
 
     document.querySelector('#user-input1')
         .value = input1;
     document.querySelector('#user-input2')
         .value = input2;
+    document.querySelector('#user-input3')
+        .value = input3;
+    document.querySelector('#user-input4')
+        .value = input4;
+    document.querySelector('#user-input5')
+        .value = input5;
     document.querySelector('#result')
         .innerText = result;
 }
@@ -32,44 +49,28 @@ function handleUserInput1(event) {
     let userInput = event.target.value;
 
     input1 = userInput;
-
-    decideWinner();
 }
 
 function handleUserInput2(event) {
-    let userInput = event.target.value;
+    let userInput2 = event.target.value;
 
-    input2 = userInput;
-
-    decideWinner();
+    input2 = userInput2;
 }
 
-function decideWinner() {
-    if (input1 === 'Pikachu' && input2 === 'Charizard') {
-        result = 'Trainer 1 Wins!';
-    }
+function handleUserInput3(event) {
+    let userInput3 = event.target.value;
 
-    if (input1 === 'Charizard' && input2 === 'Pikachu') {
-        result = 'Trainer 2 wins!';b
-    }
+    input3 = userInput3;
+}
+function handleUserInput4(event) {
+    let userInput4 = event.target.value;
 
-    if (input1 === 'Pikachu' && input2 === 'Mew') {
-        result = 'Trainer 2 wins!';
-    }
+    input4 = userInput4;
+}
+function handleUserInput5(event) {
+    let userInput5 = event.target.value;
 
-    if (input1 === 'Mew' && input2 === 'Pikachu') {
-        result = 'Trainer 1 wins!';
-    }
-
-    if (input1 === 'Charizard' && input2 === 'Mew') {
-        result = 'Trainer 2 wins!';
-    }
-
-    if (input1 === 'Mew' && input2 === 'Charizard') {
-        result = 'Trainer 1 wins!';
-    }
-
-    printResult();
+    input5 = userInput5;
 }
 
 function printResult() {
