@@ -1,3 +1,5 @@
+// Global variables ftw
+
 let input1 = '';
 let input2 = '';
 let input3 = '';
@@ -5,13 +7,16 @@ let input4 = '';
 let input5 = '';
 let result = '';
 let switched = false;
-let heading = '';
+let heading = ''; // What should the heading start out as?
 
+// Set init to run when the window loads.
 window.onload = init;
 
 function init() {
+    // Make sure we're dealing with a clean slate.
     reset();
 
+    // Set event handlers.
     document.querySelector('#user-input1')
         .addEventListener('keyup', handleUserInput1);
 
@@ -47,28 +52,39 @@ function reset() {
     document.querySelector('#user-input3').value = input3;
     document.querySelector('#user-input4').value = input4;
     document.querySelector('#user-input5').value = input5;
+
+    
+    // If you feel like it, you can comment out the five queries above and use the magical one below!
+    // Feel free to ask how it works.
+
+    // document.querySelectorAll('.input').forEach(function(node) { node.value = ''});
+
     document.querySelector('#result').innerText = result;
 }
 
 function switchGears() {
-    switched = !switched;
+    // TODO: change the value:of 'switched' to the opposite of what it currently is
 
     if(switched) {
-        heading = '';
+        heading = ''; // TODO: change the heading to whatever would be appropriate for YOUR app.
     } else {
-        heading = '';
+        heading = ''; // TODO: change the heading to whatever would be appropriate for your OTHER app.
     }
 
-    reset();
+    changeHeading();
+}
+
+function changeHeading() {
+    document.querySelector('#heading').innerText = heading;
 }
 
 function handleUserInput1(event) {
     let userInput = event.target.value;
 
     if(switched) {
-        // code for one version here
+        // TODO: handle the input for one app version
     } else {
-        // code for other version here
+        // TODO:  handle the input for one app version
     }
 }
 
