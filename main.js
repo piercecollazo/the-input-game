@@ -6,8 +6,9 @@ let input3 = '';
 let input4 = '';
 let input5 = '';
 let result = '';
-let switched = false;
+let switched = 1;
 let heading = ''; // What should the heading start out as?
+
 
 // Set init to run when the window loads.
 window.onload = init;
@@ -37,6 +38,9 @@ function init() {
 
     document.querySelector('#switch')
         .addEventListener('click', switchGears)
+
+    document.querySelector('#enter')
+    .addEventListener('click', printResult)
 }
 
 function reset() {
@@ -63,13 +67,28 @@ function reset() {
 }
 
 function switchGears() {
-    // TODO: change the value:of 'switched' to the opposite of what it currently is
-
-    if(switched) {
-        heading = ''; // TODO: change the heading to whatever would be appropriate for YOUR app.
-    } else {
-        heading = ''; // TODO: change the heading to whatever would be appropriate for your OTHER app.
+    // switcher now uses numbers to cycle between apps by incrementing up to a limit and then cycling back on button press.
+    console.log(switched)
+    
+    if(switched > 3){
+        switched = 1;
+    } else if(switched === 1){
+        heading = "Biggest Number!";
+        switched++;
+    } else if(switched === 2){
+        heading = "Let's even the odds!";
+        switched++;
+    } else if(switched === 3){
+        heading = "Global warming";
+        switched=0;
     }
+    // if(switched === false) {
+    //     heading = "Let's even the odds!";
+    //     switched = true;
+    // } else {
+    //     heading = 'Biggest number!';
+    //     switched = false;
+    // }
 
     changeHeading();
 }
@@ -79,29 +98,63 @@ function changeHeading() {
 }
 
 function handleUserInput1(event) {
-    let userInput = event.target.value;
+    let userInput = parseInt(event.target.value);
 
-    if(switched) {
-        // TODO: handle the input for one app version
-    } else {
-        // TODO:  handle the input for one app version
-    }
+    input1 = isNaN(userInput) == false ? userInput : 'Goof';
 }
 
 function handleUserInput2(event) {
-    let userInput2 = event.target.value;
+    let userInput = parseInt(event.target.value);
+
+    input2 = isNaN(userInput) === false ? userInput : 'Goof';
 }
 
 function handleUserInput3(event) {
-    let userInput3 = event.target.value;
+    let userInput = parseInt(event.target.value);
+
+    input3 = isNaN(userInput) === false ? userInput : 'Goof';
 }
 function handleUserInput4(event) {
-    let userInput4 = event.target.value;
+    let userInput = parseInt(event.target.value);
+
+    input4 = isNaN(userInput) === false ? userInput : 'Goof';
 }
 function handleUserInput5(event) {
-    let userInput5 = event.target.value;
+    let userInput = parseInt(event.target.value);
+
+    input5 = isNaN(userInput) === false ? userInput : 'Goof';
 }
 
 function printResult() {
+    let myNum = [input1,input2,input3,input4,input5];
+    if(switched === 1){
+        myNum.sort(function(a,b){return a - b});
+        for(let i = 0; i < myNum.length; i++){
+            switch(myNum[i]){
+                case 'Goof':
+                result = 'You need to enter only numbers!';
+                i = myNum.length + 1;
+                break;
+
+                default:
+                result = myNum[myNum.length-1];
+                
+            }
+        }
+    } else if(switched === 2){
+        let oddNum = []
+        let evenNum = []
+        let filteredNum = myNum.filter(function(element){return element !== 'Goof'});
+        for(let i = 0; i < filteredNum.length; i++){
+            if(filteredNum[i] % 2 != 0){
+                oddNum.push(filteredNum[i]);
+                evenNum.push(filteredNum[i] + 1);
+            } else{
+                continue;
+            }
+            result = "Your entries were: " + filteredNum + ". " + "Your odd numbers were: " + oddNum + ", and have been evened out into " + evenNum + "!";
+        }
+    }
+    
     document.querySelector('#result').innerText = result;
 }
