@@ -154,6 +154,22 @@ function printResult() {
             }
             result = "Your entries were: " + filteredNum + ". " + "Your odd numbers were: " + oddNum + ", and have been evened out into " + evenNum + "!";
         }
+    } else if(switched === 3){
+        let myTempC = 0;
+        let myTempF = (myTempC * 9 / 5) + 32;
+
+        for(let i = 0; i < myNum.length; i++){
+            myTempC += myNum[i];
+        }
+
+        if(myTempC >= 18 && < 25){
+            result = 'Your settings made  it ' + myTempC + ' and ' + myTempF + ' Fahrenheit. Just right!'
+        } else if(myTempC < 18){
+            result = 'Your settings made  it ' + myTempC + ' and ' + myTempF + ' Fahrenheit. Too cold, turn it up!'
+        } else if(myTempC > 25){
+            result = 'Your settings made  it ' + myTempC + ' and ' + myTempF + ' Fahrenheit. Too hot, turn it down!'
+        }
+
     }
     
     document.querySelector('#result').innerText = result;
