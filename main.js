@@ -162,7 +162,7 @@ function printResult() {
             myTempC += myNum[i];
         }
 
-        if(myTempC >= 18 && < 25){
+        if(myTempC >= 18 && myTempC < 25){
             result = 'Your settings made  it ' + myTempC + ' and ' + myTempF + ' Fahrenheit. Just right!'
         } else if(myTempC < 18){
             result = 'Your settings made  it ' + myTempC + ' and ' + myTempF + ' Fahrenheit. Too cold, turn it up!'
